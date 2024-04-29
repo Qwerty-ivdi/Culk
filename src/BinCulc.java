@@ -1,10 +1,10 @@
-public class DecCulc implements Valid{
+public class BinCulc implements Valid {
+
     @Override
     public boolean valid(String num) {
-        if(num.matches("[0-9]+"))
+        if(num.matches("[01]+"))
             return true;
         else
             return false;
     }
-
 }
