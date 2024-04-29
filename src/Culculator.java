@@ -21,7 +21,15 @@ public class Culculator {
         }
         return 0;
     }
-
+    void oper(char c) {
+        switch (c){
+            case '+':
+            case '-':
+            case '*':
+            case '/':return;
+            default:throw new IllegalArgumentException("Такой операции нет");
+        }
+    }
     void add(Number operand1, int sys){
         switch (sys){
             case 1: operand1.setNumber(scanner.next(),2); break;
@@ -41,20 +49,24 @@ public class Culculator {
             System.out.println("4. Hex");
 
             int sys = scanner.nextInt();
+            try {
+                System.out.println("Введите первое число");
+                Number operand1 = new Number();
+                add(operand1, sys);
 
-            System.out.println("Введите первое число");
-            Number operand1=new Number();
-            add(operand1,sys);
+                System.out.println("Введите операцию");
+                char operation = scanner.next().charAt(0);
+                oper(operation);
+                System.out.println("Введите второе число");
+                Number operand2 = new Number();
+                add(operand2, sys);
 
-            System.out.println("Введите операцию");
-            char operation = scanner.next().charAt(0);
-            System.out.println("Введите второе число");
-            Number operand2=new Number();
-            add(operand2,sys);
-
-            res.setNumber(String.valueOf(sul(operand1,operand2,operation)),10);
-            System.out.println(res.printNumber());
-
+                res.setNumber(String.valueOf(sul(operand1, operand2, operation)), 10);
+                System.out.println(res.printNumber());
+            }
+            catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
